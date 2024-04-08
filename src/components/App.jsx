@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
-
+import { Container, Title, SubTitle } from './App.styled';
 export class App extends Component {
   state = {
     contacts: [
@@ -11,11 +11,29 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
+  };
+
+  addContact = values => {
+    const contact = { ...values, id: nanoid() };
+    const { contacts } = this.state;
+    if (contacts.some(contact => contact.name === values.name)) {
+      alert(`${values.name} is already on contacts`);
+      return;
+    }
+    this.setState(prevState => {
+      return {
+        contacts: [...prevState.contacts, contact],
+      };
+    });
   };
 
   render() {
-    return <ContactForm>Contact List</ContactForm>;
+    return (
+      <Container>
+        <Title>Phonebook</Title>
+        <ContactForm onAddContact={this.addContact} />
+        <SubTitle>Contacts</SubTitle>
+      </Container>
+    );
   }
 }

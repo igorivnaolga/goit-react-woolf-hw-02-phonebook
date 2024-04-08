@@ -30,12 +30,12 @@ export const Button = styled.button`
   border-radius: 10px;
   border: none;
   box-shadow: 0 1px 7px grey;
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
 
   &:hover {
-    color: white;
-    background-color: black;
+    color: #000;
+    background-color: #fff;
     cursor: pointer;
   }
 `;

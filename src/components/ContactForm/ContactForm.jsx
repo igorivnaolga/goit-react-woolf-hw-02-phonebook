@@ -35,7 +35,7 @@ export const ContactForm = ({ onAddContact }) => {
               required
             />
           </label>
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Add contact</Button>
         </Form>
       </Formik>
     </SectionInput>
