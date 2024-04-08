@@ -29,13 +29,26 @@ export class App extends Component {
     });
   };
 
+  handleDelete = contactId => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(
+          contact => contact.id !== contactId
+        ),
+      };
+    });
+  };
+
   render() {
     return (
       <Container>
         <Title>Phonebook</Title>
         <ContactForm onAddContact={this.addContact} />
         <SubTitle>Contacts</SubTitle>
-        <ContactList contacts={this.state.contacts}></ContactList>
+        <ContactList
+          contacts={this.state.contacts}
+          onDelete={this.handleDelete}
+        ></ContactList>
       </Container>
     );
   }
