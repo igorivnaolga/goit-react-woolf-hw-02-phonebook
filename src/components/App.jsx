@@ -2,6 +2,8 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Container, Title, SubTitle } from './App.styled';
+import ContactList from './ContactList/ContactList';
+
 export class App extends Component {
   state = {
     contacts: [
@@ -33,6 +35,7 @@ export class App extends Component {
         <Title>Phonebook</Title>
         <ContactForm onAddContact={this.addContact} />
         <SubTitle>Contacts</SubTitle>
+        <ContactList contacts={this.state.contacts}></ContactList>
       </Container>
     );
   }
