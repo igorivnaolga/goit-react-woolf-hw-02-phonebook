@@ -1,11 +1,11 @@
 import ContactCard from 'components/ContactCard/ContactCard';
 import { List } from './ContactList.styled';
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, onDelete }) => {
   return (
     <List>
-      {contacts.map(({ id, name, number }) => (
-        <ContactCard key={id} name={name} number={number} />
+      {contacts.map(contact => (
+        <ContactCard key={contact.id} contact={contact} onDelete={onDelete} />
       ))}
     </List>
   );

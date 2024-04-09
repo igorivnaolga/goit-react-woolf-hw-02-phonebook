@@ -40,13 +40,18 @@ export class App extends Component {
   };
 
   render() {
+    const { contacts, filter } = this.state;
+    const visibleContacts = contacts.filter(contact => {
+      const hasName = contact.name.toLowerCase().includes(filter.toLowerCase());
+      return hasName;
+    });
     return (
       <Container>
         <Title>Phonebook</Title>
         <ContactForm onAddContact={this.addContact} />
         <SubTitle>Contacts</SubTitle>
         <ContactList
-          contacts={this.state.contacts}
+          contacts={visibleContacts}
           onDelete={this.handleDelete}
         ></ContactList>
       </Container>
